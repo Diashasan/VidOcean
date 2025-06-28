@@ -11,6 +11,16 @@ class Video extends Model
         return $this->belongsTo(User::class);
     }
 
+    protected $fillable = [
+    'title',
+    'slug',
+    'description',
+    'video_path',
+    'user_id',
+    'category_id',
+    'status',
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);

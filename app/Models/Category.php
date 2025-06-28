@@ -10,4 +10,7 @@ class Category extends Model
     {
         return $this->hasMany(Video::class);
     }
+
+    protected $fillable = ['name', 'slug'];
+
 }

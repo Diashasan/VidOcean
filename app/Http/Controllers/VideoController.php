@@ -39,5 +39,52 @@ class VideoController extends Controller
 
         return redirect()->route('videos.create')->with('success', 'Video uploaded successfully.');
     }
-}
 
+    public function index(Request $request)
+    {
+        $query = Video::with('category', 'user');
+
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
+
+        $videos = $query->orderBy('created_at', 'desc')->get();
+
+        return view('videos.index', compact('videos'));
+    }
+
+    public function show($slug)
+    {
+        $video = Video::where('slug', $slug)
+                      ->with('category', 'user')
+                      ->firstOrFail();
+        if (Auth::check()) {
+            \App\Models\WatchHistory::updateOrCreate([
+                'user_id' => Auth::id(),
+                'video_id' => $video->id,
+            ], [
+                'watched_at' => now(),
+            ]);
+        }
+
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            $alreadyWatched = $video->watchHistories()
+                                    ->where('user_id', $user->id)
+                                    ->exists();
+
+            if (! $alreadyWatched) {
+                $video->watchHistories()->create([
+                    'user_id' => $user->id,
+                ]);
+            }
+        }
+
+        return view('videos.show', compact('video'));
+    }
+}
