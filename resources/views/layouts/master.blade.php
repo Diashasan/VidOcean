@@ -29,9 +29,10 @@
         <div class="flex gap-3 items-center">
             @auth
                 <a href="{{ route('videos.create') }}" class="text-sm text-blue-600 hover:underline">Upload</a>
-                <a href="{{ route('history.index') }}" class="text-sm text-gray-700 hover:underline">Histori</a>
-                <span class="text-sm text-gray-500">Halo, 
-                    <a href="{{ url('dashboard') }}"class="text-xl font-bold text-blue-500">{{ Auth::user()->name }}
+                <a href="{{ route('history.index') }}" class="text-sm text-blue-700 hover:underline">Histori</a>
+                <a href="{{ route('dashboard') }}" class="text-sm text-blue-600 hover:underline">Dashboard</a>
+                <span class="text-sm text-gray-600">Halo, 
+                    <a href="{{ url('profile') }}"class="text-sm text-blue-600 hover:underline">{{ Auth::user()->name }}
                     </a>
                 </span>
                 <form method="POST" action="{{ route('logout') }}">
