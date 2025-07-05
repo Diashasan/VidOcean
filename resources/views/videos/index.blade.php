@@ -8,7 +8,7 @@
             <input type="text" name="search" placeholder="Cari video..." value="{{ request('search') }}"
                 class="rounded-l px-4 py-2 border border-gray-300 focus:outline-none focus:ring focus:border-blue-400 w-64" />
             <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-r hover:bg-blue-700">
-                🔍
+                Cari
             </button>
         </form>
     </div>
@@ -33,7 +33,7 @@
                 <div class="p-4">
                     <h3 class="text-lg font-semibold text-gray-800 group-hover:text-blue-600 truncate">{{ $video->title }}</h3>
                     <p class="text-sm text-gray-500 mb-1 truncate">{{ $video->description }}</p>
-                    <p class="text-xs text-gray-400">👤 {{ $video->user->name }}</p>
+                    <p class="text-xs text-gray-400">{{ $video->user->name }}</p>
                 </div>
             </a>
         @empty

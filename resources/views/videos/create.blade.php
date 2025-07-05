@@ -551,8 +551,4 @@
     });
 </script>
 
-<<<<<<< HEAD
 @endsection
-=======
-@endsection 
->>>>>>> d782962 (main)

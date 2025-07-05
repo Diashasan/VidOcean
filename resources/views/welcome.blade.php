@@ -9,8 +9,8 @@
         <p class="text-xl mb-6">Platform berbagi video kreatif, bebas, dan inspiratif untuk semua orang.</p>
 
         @guest
-            <a href="{{ route('login') }}" class="bg-yellow-400 text-black px-6 py-3 rounded font-semibold hover:bg-yellow-300 transition">Masuk Sekarang</a>
-            <a href="{{ route('register') }}" class="ml-3 border border-white px-6 py-3 rounded font-semibold hover:bg-white hover:text-blue-700 transition">Daftar Gratis</a>
+            <a href="{{ route('login') }}" class="bg-yellow-400 text-black px-6 py-3 rounded font-semibold hover:bg-yellow-300 transition">Login</a>
+            <a href="{{ route('register') }}" class="ml-3 border border-white px-6 py-3 rounded font-semibold hover:bg-white hover:text-blue-700 transition">Register</a>
         @else
             <a href="{{ route('videos.create') }}" class="bg-white text-blue-600 px-6 py-3 rounded font-semibold hover:bg-gray-100 transition">Upload Video</a>
             <a href="{{ route('videos.index') }}" class="bg-white text-blue-600 px-6 py-3 rounded font-semibold hover:bg-gray-100 transition">Jelajahi!</a>

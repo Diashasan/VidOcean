@@ -8,6 +8,7 @@ use App\Http\Controllers\VideoReactionController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\WatchHistoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FotoController;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/upload', [VideoController::class, 'create'])->name('videos.create');
@@ -71,6 +72,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('dashboard');
 });
+
+Route::get('/up', function () {
+    return view('upload');
+});
+
+Route::post('/up', [FotoController::class, 'upload'])->name('upload.foto');
+
 
 
 require __DIR__.'/auth.php';
